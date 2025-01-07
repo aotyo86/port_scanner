@@ -4,28 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Port Scanner</title>
+    <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
 </head>
 <body>
-    <h1>Port Scanner</h1>
-    <form id="scan-form">
-        <label for="ip">IP Address:</label>
-        <input type="text" id="ip" name="ip" required>
-        <br>
-        <label for="start-port">Start Port:</label>
-        <input type="number" id="start-port" name="start_port" required min="1" max="65535">
-        <br>
-        <label for="end-port">End Port:</label>
-        <input type="number" id="end-port" name="end_port" required min="1" max="65535">
-        <br>
-        <button type="submit">Scan</button>
-    </form>
-    <br>
-    <div id="result"></div>
-
-    <div>
-        <h2>Scan Results</h2>
-        <table id="results-table" border="1">
+    <div class="container">
+        <h1>Port Scanner</h1>
+        <form id="scan-form">
+            <label for="ip">IP Address:</label>
+            <input type="text" id="ip" name="ip" required>
+            <label for="start_port">Start Port:</label>
+            <input type="number" id="start_port" name="start_port" required min="1" max="65535">
+            <label for="end_port">End Port:</label>
+            <input type="number" id="end_port" name="end_port" required min="1" max="65535">
+            <button type="submit">Scan</button>
+        </form>
+        <div id="result"></div>
+        <table id="results-table">
             <thead>
                 <tr>
                     <th>Port</th>
@@ -33,10 +29,9 @@
                     <th>Service</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+            </tbody>
         </table>
     </div>
-    
-    <script src="/static/js/script.js"></script>
 </body>
 </html>
