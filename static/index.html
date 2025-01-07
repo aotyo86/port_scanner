@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Scanner</title>
+</head>
+<body>
+    <h1>Port Scanner</h1>
+    <form id="scan-form">
+        <label for="ip">IP Address:</label>
+        <input type="text" id="ip" name="ip" required>
+        <label for="start-port">Start Port:</label>
+        <input type="number" id="start-number" name="start-port" required>
+        <label for="end-port">End Port:</label>
+        <input type="number" id="end-port" name="end-port" required>
+        <button type="submit">Scan</button>
+    </form>
+    <div id="result">
+    </div>
+    <script>
+        document.getElementById('scan-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const ip = document.getElementById('ip').value;
+            const startPort = document.getElementById('start-port').value;
+            const endPort = document.getElementById('end-port').value;
+
+            const response = await fetch('/scan', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ip, start_port: Number(startPort), end_port: Number(endPort) })
+            });
+            const data = await response.json();
+            document.getElementById('result').innerHTML = `<h2>Open Ports:</h2><p>${data.open_ports.join(', ')}</p>`;
+        });
+    </script>
+</body>
+</html>
